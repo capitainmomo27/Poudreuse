@@ -28,13 +28,9 @@ Logiciel de gestion pour les entreprises de déneigement du Québec : soumission
 
 ## Télécharger le programme Windows
 
-Le fichier `Poudreuse.exe` est fabriqué automatiquement par GitHub à chaque modification du code.
+**[Télécharger Poudreuse.exe](https://github.com/capitainmomo27/Poudreuse/releases/latest/download/Poudreuse.exe)**
 
-1. Ouvrez l'onglet **Actions** du dépôt.
-2. Cliquez sur la dernière exécution réussie de **Compiler Poudreuse.exe** (coche verte).
-3. En bas de la page, dans **Artifacts**, téléchargez **Poudreuse-windows**, puis décompressez-le.
-
-Pour publier une version officielle dans l'onglet **Releases**, créez une étiquette commençant par `v` (par exemple `v1.0.0`) : GitHub y joint l'exécutable.
+Le fichier est fabriqué automatiquement par GitHub à chaque modification du code, puis publié dans l'onglet **Releases** du dépôt.
 
 Au premier lancement, Windows peut afficher « Windows a protégé votre ordinateur », car le programme n'est pas signé numériquement. Cliquez sur **Informations complémentaires**, puis **Exécuter quand même**. Pour vendre le logiciel à grande échelle, un certificat de signature de code fait disparaître cet avertissement.
 

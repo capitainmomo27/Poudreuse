@@ -1,6 +1,6 @@
 # Fabrique Poudreuse.exe pour Windows à chaque envoi de code.
-# Le fichier se télécharge dans l'onglet « Actions » du dépôt (section Artifacts),
-# ou dans « Releases » quand on publie une version (étiquette v1.0.0, v1.1.0…).
+# Chaque mise à jour de la branche main publie une nouvelle version dans « Releases »,
+# avec Poudreuse.exe en téléchargement direct.
 name: Compiler Poudreuse.exe
 
 on:
@@ -56,9 +56,15 @@ jobs:
           name: Poudreuse-windows
           path: dist/Poudreuse.exe
 
-      - name: Publier la version
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Publier la version (téléchargement direct dans « Releases »)
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('v1.0.{0}', github.run_number) }}
+          name: Poudreuse ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('1.0.{0}', github.run_number) }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
           files: dist/Poudreuse.exe
-          generate_release_notes: true
+          body: |
+            Téléchargez **Poudreuse.exe** ci-dessous, puis double-cliquez dessus.
+            Si Windows affiche « Windows a protégé votre ordinateur », cliquez sur « Informations complémentaires », puis « Exécuter quand même ».
